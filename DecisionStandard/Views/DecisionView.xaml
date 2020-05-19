@@ -5,8 +5,54 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DecisionStandard.Views"
         mc:Ignorable="d"
-        Title="DecisionView" Height="450" Width="800">
+        FontSize="20"
+        Padding="10"
+        WindowStartupLocation="CenterScreen"
+        Title="Decision Standard" Height="450" Width="800">
     <Grid>
         
+        <!-- For padding -->
+        <Grid.Resources >
+            <Style TargetType="Border" >
+                <Setter Property="Padding" Value="5,5,5,5" />
+            </Style>
+        </Grid.Resources>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        
+        
+        <Border Grid.Row="0" Grid.Column="0">
+            <TextBlock Text="First Decision"></TextBlock>
+        </Border>
+        <Border Grid.Row="1" Grid.Column="0">
+            <TextBox MinWidth="100" x:Name="FirstDecision" ></TextBox>
+        </Border>
+
+        <Border Grid.Row="0" Grid.Column="1">
+            <TextBlock Text="Second Decision"></TextBlock>
+        </Border>
+        <Border Grid.Row="1" Grid.Column="1">
+            <TextBox MinWidth="100" x:Name="Secondecision" ></TextBox>
+        </Border>
+
+        <!-- Button to open config viewmodel -->
+        <Border Grid.Row="2" Grid.Column="0">
+            <Button Content="Configure" x:Name="LoadConfigView"></Button>
+        </Border>
+
     </Grid>
 </Window>

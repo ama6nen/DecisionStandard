@@ -5,6 +5,7 @@ using System.Text;
 
 using DecisionStandard.Models;
 using System.Runtime.CompilerServices;
+using System.Diagnostics;
 
 namespace DecisionStandard.ViewModels
 {
@@ -15,12 +16,14 @@ namespace DecisionStandard.ViewModels
 
         private void NotifyChange<T>(ref T field, T newval, [CallerMemberName] string name = "") //so we can actually use 1 liner for setter
         {
+
             field = newval;
             NotifyOfPropertyChange(name);
         }
 
         public ConfigViewModel(IWindowManager manager)
         {
+            Debug.WriteLine("Constructing config viewmodel");
             _windowMgr = manager;
             config = new ConfigModel();
         }

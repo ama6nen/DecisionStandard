@@ -5,10 +5,12 @@ using System.Text;
 using DecisionStandard.Models;
 using System.Runtime.CompilerServices;
 using DecisionStandard.Views;
+using System.Threading;
+using System.Diagnostics;
 
 namespace DecisionStandard.ViewModels
 {
-    public class DecisionViewModel : Screen
+    public class DecisionViewModel : Conductor<object>
     {
         private readonly IWindowManager _windowMgr; //might be needed later
         private DecisionModel decision = null;
@@ -27,6 +29,16 @@ namespace DecisionStandard.ViewModels
         }
 
         public DecisionModel Config { get => decision; set => NotifyChange(ref decision, value); }
+       
+        //Realistically we dont need these in the Model itself
+        private string _firstDecision;
+        public string FirstDecision { get => _firstDecision; set => NotifyChange(ref _firstDecision, value); }
+        private string _secondDecision;
+        public string SecondDecision { get => _secondDecision; set => NotifyChange(ref _secondDecision, value); }
 
+        public async void LoadConfigView()
+        {
+            await _windowMgr.ShowWindowAsync(IoC.Get<ConfigViewModel>());
+        }
     }
 }
