@@ -25,7 +25,8 @@ namespace DecisionStandard.ViewModels
         {
             Debug.WriteLine("Constructing config viewmodel");
             _windowMgr = manager;
-            config = new ConfigModel();
+            config = new ConfigModel("Debug test");
+            config.DebugPrint();
         }
 
         public ConfigModel Config { get => config; set => NotifyChange(ref config, value); }

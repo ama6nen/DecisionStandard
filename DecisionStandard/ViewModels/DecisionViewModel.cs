@@ -23,12 +23,13 @@ namespace DecisionStandard.ViewModels
 
         public DecisionViewModel(IWindowManager manager)
         {
-            var config = IoC.Get<ConfigView>(); //we will want to use config if its loaded with data to aid our standard
+            var config = IoC.Get<ConfigViewModel>(); //we will want to use config if its loaded with data to aid our standard
+            config.Config.DebugPrint();
             _windowMgr = manager;
             decision = new DecisionModel();
         }
 
-        public DecisionModel Config { get => decision; set => NotifyChange(ref decision, value); }
+        public DecisionModel Decision { get => decision; set => NotifyChange(ref decision, value); }
        
         //Realistically we dont need these in the Model itself
         private string _firstDecision;
