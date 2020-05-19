@@ -14,6 +14,7 @@ namespace DecisionStandard.ViewModels
     {
         private readonly IWindowManager _windowMgr; //might be needed later
         private DecisionModel decision = null;
+        private ConfigViewModel config = null;
 
         private void NotifyChange<T>(ref T field, T newval, [CallerMemberName] string name = "") //so we can actually use 1 liner for setter
         {
@@ -23,8 +24,7 @@ namespace DecisionStandard.ViewModels
 
         public DecisionViewModel(IWindowManager manager)
         {
-            var config = IoC.Get<ConfigViewModel>(); //we will want to use config if its loaded with data to aid our standard
-            config.Config.DebugPrint();
+            config = IoC.Get<ConfigViewModel>(); //we will want to use config if its loaded with data to aid our standard
             _windowMgr = manager;
             decision = new DecisionModel();
         }

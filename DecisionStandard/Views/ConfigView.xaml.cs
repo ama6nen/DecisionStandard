@@ -1,5 +1,9 @@
-﻿using System;
+﻿using Caliburn.Micro;
+using DecisionStandard.ViewModels;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,9 +21,14 @@ namespace DecisionStandard.Views
     /// </summary>
     public partial class ConfigView : Window
     {
+        private ConfigViewModel viewModel;
         public ConfigView()
         {
+            Debug.WriteLine("Setting up ConfigView");
             InitializeComponent();
+            viewModel = IoC.Get<ConfigViewModel>();
+            Closing += viewModel.HandleClose;
+          
         }
     }
 }
