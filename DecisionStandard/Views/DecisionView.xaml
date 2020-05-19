@@ -39,14 +39,14 @@
             <TextBlock Text="First Decision"></TextBlock>
         </Border>
         <Border Grid.Row="1" Grid.Column="0">
-            <TextBox MinWidth="100" x:Name="FirstDecision" ></TextBox>
+            <TextBox MinWidth="100" x:Name="FirstDecision_Name" ></TextBox>
         </Border>
 
         <Border Grid.Row="0" Grid.Column="1">
             <TextBlock Text="Second Decision"></TextBlock>
         </Border>
         <Border Grid.Row="1" Grid.Column="1">
-            <TextBox MinWidth="100" x:Name="Secondecision" ></TextBox>
+            <TextBox MinWidth="100" x:Name="SecondDecision_Name" ></TextBox>
         </Border>
 
         <!-- Button to open config viewmodel -->
@@ -54,5 +54,8 @@
             <Button Content="Configure" x:Name="LoadConfigView"></Button>
         </Border>
 
+        <Border Grid.Row="2" Grid.Column="1">
+            <Button Content="Debug" x:Name="DebugButton"></Button>
+        </Border>
     </Grid>
 </Window>
