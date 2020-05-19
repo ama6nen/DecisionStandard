@@ -10,14 +10,14 @@
         WindowStartupLocation="CenterScreen"
         Title="Decision Standard" Height="450" Width="800">
     <Grid>
-        
+
         <!-- For padding -->
         <Grid.Resources >
             <Style TargetType="Border" >
                 <Setter Property="Padding" Value="5,5,5,5" />
             </Style>
         </Grid.Resources>
-        
+
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
@@ -25,7 +25,7 @@
             <RowDefinition Height="auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="auto" />
@@ -33,28 +33,40 @@
             <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        
-        
-        <Border Grid.Row="0" Grid.Column="0">
-            <TextBlock Text="First Decision"></TextBlock>
-        </Border>
-        <Border Grid.Row="1" Grid.Column="0">
-            <TextBox MinWidth="100" x:Name="FirstDecision_Name" ></TextBox>
-        </Border>
+
 
         <Border Grid.Row="0" Grid.Column="1">
-            <TextBlock Text="Second Decision"></TextBlock>
+            <TextBlock Text="First Decision"></TextBlock>
         </Border>
         <Border Grid.Row="1" Grid.Column="1">
+            <TextBox MinWidth="100" x:Name="FirstDecision_Name" ></TextBox>
+        </Border>
+        <Border Grid.Row="1" Grid.Column="0">
+            <TextBlock Text="Name"></TextBlock>
+        </Border>
+        <Border Grid.Row="2" Grid.Column="0">
+            <TextBlock Text="Productivity"></TextBlock>
+        </Border>
+        <Border Grid.Row="0" Grid.Column="2">
+            <TextBlock Text="Second Decision"></TextBlock>
+        </Border>
+        <Border Grid.Row="1" Grid.Column="2">
             <TextBox MinWidth="100" x:Name="SecondDecision_Name" ></TextBox>
         </Border>
 
+        <Border Grid.Row="2" Grid.Column="1">
+            <Slider Minimum="0" Maximum="10" x:Name="FirstDecision_Productivity" Value="0" IsSnapToTickEnabled="True" TickFrequency="1" />
+        </Border>
+        <Border Grid.Row="2" Grid.Column="2">
+            <Slider Minimum="0" Maximum="10" x:Name="SecondDecision_Productivity" Value="0" IsSnapToTickEnabled="True" TickFrequency="1" />
+        </Border>
         <!-- Button to open config viewmodel -->
-        <Border Grid.Row="2" Grid.Column="0">
+        <Border Grid.Row="3" Grid.Column="1">
             <Button Content="Configure" x:Name="LoadConfigView"></Button>
         </Border>
 
-        <Border Grid.Row="2" Grid.Column="1">
+        
+        <Border Grid.Row="3" Grid.Column="2">
             <Button Content="Debug" x:Name="DebugButton"></Button>
         </Border>
     </Grid>

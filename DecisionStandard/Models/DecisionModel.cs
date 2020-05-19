@@ -9,6 +9,8 @@ namespace DecisionStandard.Models
     {
         public string Name { get; set; }
        
+        public int Productivity { get; set; }
+
         //not needed or used for now, might be useful for identifying theselater though
         private  static int IDCounter = 0;
         private int ID = 0;
@@ -20,6 +22,7 @@ namespace DecisionStandard.Models
         public void DebugPrint()
         {
             Debug.WriteLine("Name: " + Name);
+            Debug.WriteLine("Productivity: " + Productivity);
         }
     }
 }
