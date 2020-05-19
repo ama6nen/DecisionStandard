@@ -6,6 +6,8 @@ using System.Text;
 using DecisionStandard.Models;
 using System.Runtime.CompilerServices;
 using System.Diagnostics;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace DecisionStandard.ViewModels
 {
@@ -25,10 +27,21 @@ namespace DecisionStandard.ViewModels
         {
             Debug.WriteLine("Constructing config viewmodel");
             _windowMgr = manager;
-            config = new ConfigModel("Debug test");
-            config.DebugPrint();
+            LoadConfigFile();
+           
         }
 
         public ConfigModel Config { get => config; set => NotifyChange(ref config, value); }
+
+        private void LoadConfigFile()
+        {
+            config = new ConfigModel("Debug test");
+          
+            if (File.Exists("config.json"))
+                config = JsonConvert.DeserializeObject<ConfigModel>(File.ReadAllText("config.json"));
+            else File.WriteAllText("config.json", JsonConvert.SerializeObject(config));
+
+            config.DebugPrint();
+        }
     }
 }
