@@ -49,5 +49,8 @@
         <Border Grid.Row="0" Grid.Column="2">
             <Button Content="Debug" x:Name="DebugPrint"/>
         </Border>
+        <Border Grid.Row="0" Grid.Column="3">
+            <Button Content="Save" x:Name="Save"/>
+        </Border>
     </Grid>
 </Window>

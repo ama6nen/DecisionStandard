@@ -16,15 +16,11 @@ using System.Windows.Shapes;
 
 namespace DecisionStandard.Views
 {
-    /// <summary>
-    /// Interaction logic for ConfigView.xaml
-    /// </summary>
     public partial class ConfigView : Window
     {
         private ConfigViewModel viewModel;
         public ConfigView()
         {
-            Debug.WriteLine("Setting up ConfigView");
             InitializeComponent();
             viewModel = IoC.Get<ConfigViewModel>();
             Closing += viewModel.HandleClose;

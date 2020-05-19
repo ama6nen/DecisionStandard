@@ -14,20 +14,16 @@ namespace DecisionStandard
             Initialize();
         }
 
+        //might as well make it look cleaner since we probably will not need these 3 methods
         protected override object GetInstance(Type serviceType, string key)
-        {
-            return _container.GetInstance(serviceType, key);
-        }
-
+        => _container.GetInstance(serviceType, key);
+        
         protected override IEnumerable<object> GetAllInstances(Type serviceType)
-        {
-            return _container.GetAllInstances(serviceType);
-        }
+        =>_container.GetAllInstances(serviceType);
 
         protected override void BuildUp(object instance)
-        {
-            _container.BuildUp(instance);
-        }
+        => _container.BuildUp(instance);
+
         protected override void Configure()
         {
             _container.Singleton<IWindowManager, WindowManager>();

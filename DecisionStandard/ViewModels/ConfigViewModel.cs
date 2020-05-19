@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-
 using DecisionStandard.Models;
 using System.Runtime.CompilerServices;
 using System.Diagnostics;
@@ -11,9 +10,6 @@ using Newtonsoft.Json;
 using System.ComponentModel;
 using System.Windows;
 using DecisionStandard.Views;
-using System.Windows.Input;
-using System.Text.RegularExpressions;
-using System.Windows.Controls;
 
 namespace DecisionStandard.ViewModels
 {
@@ -72,9 +68,23 @@ namespace DecisionStandard.ViewModels
             config.DebugPrint();
             oldConfig.DebugPrint();
         }
+        public void Save()
+        {
+            if (oldConfig.Equals(config))
+            {
+                MessageBox.Show("Nothing to save, config is already up-to-date.");
+                return;
+            }
+            var res = MessageBox.Show("Are you sure you want to save these settings? It cannot be reverted.", "Save", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (res == MessageBoxResult.Yes)
+            {
+                File.WriteAllText("config.json", JsonConvert.SerializeObject(config));  //save config
+                oldConfig = config.ShallowCopy(); //So now our oldconfig is our new one
+            }
+        }
+
         public void HandleClose(object sender, CancelEventArgs e)
         {
-
             if (!config.Equals(oldConfig)) //Why bother asking if you want to save if nothing is changed
             {
                 var res = MessageBox.Show("Do you want to save the configuration?", "Save", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
