@@ -5,9 +5,49 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DecisionStandard.Views"
         mc:Ignorable="d"
+        FontSize="15"
         Background="AliceBlue"
         Title="Configuration" Height="350" Width="450">
     <Grid>
-        
+        <!-- For padding -->
+        <Grid.Resources >
+            <Style TargetType="Border" >
+                <Setter Property="Padding" Value="5,5,5,5" />
+            </Style>
+        </Grid.Resources>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" MinWidth="75"/>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+
+        <Border Grid.Row="0" Grid.Column="0">
+            <TextBlock Text="Productivity Weight"></TextBlock>
+        </Border>
+        <Border Grid.Row="1" Grid.Column="0">
+            <TextBlock Text="Difficulty Weight"></TextBlock>
+        </Border>
+        <Border Grid.Row="0" Grid.Column="1">
+            <TextBox TextWrapping="Wrap" x:Name="ProdHandler"></TextBox>
+        </Border>
+        <Border Grid.Row="1" Grid.Column="1">
+            <TextBox TextWrapping="Wrap" x:Name="DifficultyHandler"></TextBox>
+        </Border>
+        <Border Grid.Row="0" Grid.Column="2">
+            <Button Content="Debug" x:Name="DebugPrint"/>
+        </Border>
     </Grid>
 </Window>

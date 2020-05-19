@@ -11,6 +11,9 @@ using Newtonsoft.Json;
 using System.ComponentModel;
 using System.Windows;
 using DecisionStandard.Views;
+using System.Windows.Input;
+using System.Text.RegularExpressions;
+using System.Windows.Controls;
 
 namespace DecisionStandard.ViewModels
 {
@@ -35,6 +38,16 @@ namespace DecisionStandard.ViewModels
 
         public ConfigModel Config { get => config; set => NotifyChange(ref config, value); }
 
+        public string ProdHandler //we need to handle it like this
+        {
+            get => config.ProdWeight.ToString("0.00");
+            set => HandleFloat(value, ref config.ProdWeight);
+        }
+        public string DifficultyHandler
+        {
+            get => config.DifficultyWeight.ToString("0.00");
+            set => HandleFloat(value, ref config.DifficultyWeight);
+        }
         private void LoadConfigFile()
         {
             config = new ConfigModel();
@@ -43,22 +56,35 @@ namespace DecisionStandard.ViewModels
                 config = JsonConvert.DeserializeObject<ConfigModel>(File.ReadAllText("config.json"));
             else File.WriteAllText("config.json", JsonConvert.SerializeObject(config)); //write the default config for now, for no reason
 
-            oldConfig = config;
+            oldConfig = config.ShallowCopy();
             config.DebugPrint();
         }
-
+        public void HandleFloat(string input, ref float variable)
+        {
+            var val = input;
+            if (val.EndsWith("."))
+                val += "0"; //otherwise when trying to input for example 2. it wont be valid
+            if (float.TryParse(val, out float res))
+                NotifyChange(ref variable, res);
+        }
+        public void DebugPrint()
+        {
+            config.DebugPrint();
+            oldConfig.DebugPrint();
+        }
         public void HandleClose(object sender, CancelEventArgs e)
         {
-            if (!object.Equals(oldConfig, config)) //Why bother asking if you want to save if nothing is changed
+
+            if (!config.Equals(oldConfig)) //Why bother asking if you want to save if nothing is changed
             {
                 var res = MessageBox.Show("Do you want to save the configuration?", "Save", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
                 if (res == MessageBoxResult.Yes)
                 {
                     File.WriteAllText("config.json", JsonConvert.SerializeObject(config));  //save config
-                    oldConfig = config; //So now our oldconfig is our new one
+                    oldConfig = config.ShallowCopy(); //So now our oldconfig is our new one
                 }
                 else if (res == MessageBoxResult.No)
-                    config = oldConfig; //reset to our old config
+                    config = oldConfig.ShallowCopy(); //reset to our old config
                 else if (res == MessageBoxResult.Cancel)
                 {
                     e.Cancel = true;

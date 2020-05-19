@@ -28,7 +28,6 @@ namespace DecisionStandard.Views
             InitializeComponent();
             viewModel = IoC.Get<ConfigViewModel>();
             Closing += viewModel.HandleClose;
-          
         }
     }
 }

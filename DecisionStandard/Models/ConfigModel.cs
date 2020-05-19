@@ -16,5 +16,23 @@ namespace DecisionStandard.Models
             Debug.WriteLine("Productivity weight is " + ProdWeight);
             Debug.WriteLine("Difficulty weight is " + DifficultyWeight);
         }
+
+        public ConfigModel ShallowCopy()
+        {
+            return (ConfigModel)this.MemberwiseClone();
+        }
+        public override bool Equals(object obj)
+        {
+            if (!(obj is ConfigModel))
+                return false;
+
+            var model = obj as ConfigModel;
+
+            if (model.ProdWeight != ProdWeight)
+                return false;
+
+            return model.DifficultyWeight == DifficultyWeight;
+        }
+        public override int GetHashCode() => base.GetHashCode();
     }
 }
