@@ -8,21 +8,14 @@ namespace DecisionStandard.Models
     public class DecisionModel
     {
         public string Name { get; set; }
-       
         public int Productivity { get; set; }
-
-        //not needed or used for now, might be useful for identifying theselater though
-        private  static int IDCounter = 0;
-        private int ID = 0;
-        public DecisionModel()
-        {
-            ID = IDCounter++;
-        }
+        public int Difficulty { get; set; }
 
         public void DebugPrint()
         {
             Debug.WriteLine("Name: " + Name);
             Debug.WriteLine("Productivity: " + Productivity);
+            Debug.WriteLine("Difficulty: " + Difficulty);
         }
     }
 }

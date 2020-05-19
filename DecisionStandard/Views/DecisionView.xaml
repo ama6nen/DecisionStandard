@@ -23,6 +23,7 @@
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
@@ -47,6 +48,9 @@
         <Border Grid.Row="2" Grid.Column="0">
             <TextBlock Text="Productivity"></TextBlock>
         </Border>
+        <Border Grid.Row="3" Grid.Column="0">
+            <TextBlock Text="Difficulty"></TextBlock>
+        </Border>
         <Border Grid.Row="0" Grid.Column="2">
             <TextBlock Text="Second Decision"></TextBlock>
         </Border>
@@ -60,14 +64,23 @@
         <Border Grid.Row="2" Grid.Column="2">
             <Slider Minimum="0" Maximum="10" x:Name="SecondDecision_Productivity" Value="0" IsSnapToTickEnabled="True" TickFrequency="1" />
         </Border>
-        <!-- Button to open config viewmodel -->
+
         <Border Grid.Row="3" Grid.Column="1">
+            <Slider Minimum="0" Maximum="10" x:Name="FirstDecision_Difficulty" Value="0" IsSnapToTickEnabled="True" TickFrequency="1" />
+        </Border>
+        <Border Grid.Row="3" Grid.Column="2">
+            <Slider Minimum="0" Maximum="10" x:Name="SecondDecision_Difficulty" Value="0" IsSnapToTickEnabled="True" TickFrequency="1" />
+        </Border>
+        
+        
+        <!-- Button to open config viewmodel -->
+        <Border Grid.Row="4" Grid.Column="1">
             <Button Content="Configure" x:Name="LoadConfigView"></Button>
         </Border>
-
-        
-        <Border Grid.Row="3" Grid.Column="2">
+      
+        <Border Grid.Row="4" Grid.Column="2">
             <Button Content="Debug" x:Name="DebugButton"></Button>
         </Border>
+        
     </Grid>
 </Window>
