@@ -13,6 +13,7 @@ using DecisionStandard.Views;
 
 namespace DecisionStandard.ViewModels
 {
+    
     public class ConfigViewModel : Screen
     {
         private readonly IWindowManager _windowMgr; //might be needed later
@@ -20,7 +21,6 @@ namespace DecisionStandard.ViewModels
         private ConfigModel oldConfig = null;
         private void NotifyChange<T>(ref T field, T newval, [CallerMemberName] string name = "") //so we can actually use 1 liner for setter
         {
-
             field = newval;
             NotifyOfPropertyChange(name);
         }
@@ -38,6 +38,11 @@ namespace DecisionStandard.ViewModels
         {
             get => config.ProdWeight.ToString("0.00");
             set => HandleFloat(value, ref config.ProdWeight);
+        }
+        public string TimeHandler 
+        {
+            get => config.TimeWeight.ToString("0.00");
+            set => HandleFloat(value, ref config.TimeWeight);
         }
         public string DifficultyHandler
         {

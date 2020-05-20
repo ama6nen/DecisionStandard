@@ -16,6 +16,10 @@ using System.Windows.Shapes;
 
 namespace DecisionStandard.Views
 {
+    public static class Constants
+    {
+        public static string TimeFormat = "HH:mm:ss";
+    }
     public partial class ConfigView : Window
     {
         private ConfigViewModel viewModel;

@@ -35,16 +35,34 @@
 
 
         <Border Grid.Row="0" Grid.Column="0">
-            <TextBlock Text="Productivity Weight"></TextBlock>
+            <TextBlock ToolTip="Should be scaled 0 to 1. How much we value productivity. Higher = Recommend more productive decisions." Text="Productivity Weight"></TextBlock>
         </Border>
         <Border Grid.Row="1" Grid.Column="0">
-            <TextBlock Text="Difficulty Weight"></TextBlock>
+            <TextBlock ToolTip="Should be scaled 0 to 1. At zero we don't care how difficult a task is. At 1 we never do difficult things." Text="Difficulty Weight"></TextBlock>
+        </Border>
+        <Border Grid.Row="2" Grid.Column="0">
+            <TextBlock ToolTip="Should be scaled 0 to 1. At zero we greatly value productive things before the goal, and not at all after it. The closer the value is to 1, the more blurred the line becomes." Text="Time Weight"></TextBlock>
+        </Border>
+        <Border Grid.Row="3" Grid.Column="0">
+            <TextBlock ToolTip="The time when you want to have productive things done and start doing more &quot;enjoyable&quot; things." Text="Productivity Goal Time"></TextBlock>
+        </Border>
+        <Border Grid.Row="4" Grid.Column="0">
+            <TextBlock ToolTip="The amount of productive things you wish to achieve in a day. If its 7, and you have done 10, it will be highly unlikely to recommend productive things." Text="Tasks Achieved Goal"></TextBlock>
         </Border>
         <Border Grid.Row="0" Grid.Column="1">
             <TextBox TextWrapping="Wrap" x:Name="ProdHandler"></TextBox>
         </Border>
         <Border Grid.Row="1" Grid.Column="1">
             <TextBox TextWrapping="Wrap" x:Name="DifficultyHandler"></TextBox>
+        </Border>
+        <Border Grid.Row="2" Grid.Column="1">
+            <TextBox TextWrapping="Wrap" x:Name="TimeHandler"></TextBox>
+        </Border>
+        <Border Grid.Row="3" Grid.Column="1">
+            <TextBox TextWrapping="Wrap" Text="{Binding Path=Config.TimeGoal, StringFormat={x:Static local:Constants.TimeFormat}}" ></TextBox>
+        </Border>
+        <Border Grid.Row="4" Grid.Column="1">
+            <TextBox TextWrapping="Wrap" x:Name="Config_TasksGoal"></TextBox>
         </Border>
         <Border Grid.Row="0" Grid.Column="2">
             <Button Content="Debug" x:Name="DebugPrint"/>
