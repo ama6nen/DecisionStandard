@@ -8,7 +8,7 @@
         FontSize="20"
         Padding="10"
         WindowStartupLocation="CenterScreen"
-        Title="Decision Standard" Height="450" Width="800">
+        Title="Decision Standard" Height="275" Width="620">
     <Grid>
 
         <!-- For padding -->
@@ -30,8 +30,9 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto"  />
+            <ColumnDefinition Width="auto" MinWidth="100"/>
+            <ColumnDefinition Width="auto"  />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
@@ -46,13 +47,19 @@
             <TextBlock Text="Name"></TextBlock>
         </Border>
         <Border Grid.Row="2" Grid.Column="0">
-            <TextBlock Text="Productivity"></TextBlock>
+            <TextBlock Text="Productivity" ToolTip="Self perceived productivity that can possibly or definitely will arise from making the decision."></TextBlock>
         </Border>
         <Border Grid.Row="3" Grid.Column="0">
-            <TextBlock Text="Difficulty"></TextBlock>
+            <TextBlock Text="Difficulty" ToolTip="Self perceived difficulty of the task or consequence of the decision."></TextBlock>
         </Border>
         <Border Grid.Row="0" Grid.Column="2">
             <TextBlock Text="Second Decision"></TextBlock>
+        </Border>
+        <Border Grid.Row="0" Grid.Column="4">
+            <TextBlock Text="Tasks done" ToolTip="The amount of productive tasks done today"></TextBlock>
+        </Border>
+        <Border Grid.Row="1" Grid.Column="4">
+            <TextBox x:Name="TasksDoneToday"></TextBox>
         </Border>
         <Border Grid.Row="1" Grid.Column="2">
             <TextBox MinWidth="100" x:Name="SecondDecision_Name" ></TextBox>
@@ -71,15 +78,20 @@
         <Border Grid.Row="3" Grid.Column="2">
             <Slider Minimum="0" Maximum="10" x:Name="SecondDecision_Difficulty" Value="0" IsSnapToTickEnabled="True" TickFrequency="1" />
         </Border>
-        
-        
+
+
         <!-- Button to open config viewmodel -->
-        <Border Grid.Row="4" Grid.Column="1">
+        <Border Grid.Row="2" Grid.Column="4">
             <Button Content="Configure" x:Name="LoadConfigView"></Button>
         </Border>
-      
-        <Border Grid.Row="4" Grid.Column="2">
-            <Button Content="Debug" x:Name="DebugButton"></Button>
+        
+        <!--button to handle decisions-->
+        <Border Grid.Row="4" Grid.Column="1">
+            <Button Content="Decide" x:Name="DecideHandler"></Button>
+        </Border>
+        
+        <Border Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2">
+            <TextBlock Text="" x:Name="DecisionMessage"></TextBlock>
         </Border>
         
     </Grid>

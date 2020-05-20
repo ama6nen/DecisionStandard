@@ -10,12 +10,5 @@ namespace DecisionStandard.Models
         public string Name { get; set; }
         public int Productivity { get; set; }
         public int Difficulty { get; set; }
-
-        public void DebugPrint()
-        {
-            Debug.WriteLine("Name: " + Name);
-            Debug.WriteLine("Productivity: " + Productivity);
-            Debug.WriteLine("Difficulty: " + Difficulty);
-        }
     }
 }

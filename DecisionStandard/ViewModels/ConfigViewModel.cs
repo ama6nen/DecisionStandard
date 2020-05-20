@@ -27,7 +27,6 @@ namespace DecisionStandard.ViewModels
 
         public ConfigViewModel(IWindowManager manager)
         {
-            Debug.WriteLine("Constructing config viewmodel");
             _windowMgr = manager;
             LoadConfigFile();
         }
@@ -38,11 +37,6 @@ namespace DecisionStandard.ViewModels
         {
             get => config.ProdWeight.ToString("0.00");
             set => HandleFloat(value, ref config.ProdWeight);
-        }
-        public string TimeHandler 
-        {
-            get => config.TimeWeight.ToString("0.00");
-            set => HandleFloat(value, ref config.TimeWeight);
         }
         public string DifficultyHandler
         {
@@ -58,7 +52,6 @@ namespace DecisionStandard.ViewModels
             else File.WriteAllText("config.json", JsonConvert.SerializeObject(config)); //write the default config for now, for no reason
 
             oldConfig = config.ShallowCopy();
-            config.DebugPrint();
         }
         public void HandleFloat(string input, ref float variable)
         {
@@ -67,11 +60,6 @@ namespace DecisionStandard.ViewModels
                 val += "0"; //otherwise when trying to input for example 2. it wont be valid
             if (float.TryParse(val, out float res))
                 NotifyChange(ref variable, res);
-        }
-        public void DebugPrint()
-        {
-            config.DebugPrint();
-            oldConfig.DebugPrint();
         }
         public void Save()
         {
